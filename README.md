@@ -5,7 +5,7 @@ An automatic random background setter for LightDM GTK greeter.
 # Why Paries?
 Paries stands for 'wall' in Latin. I chose this name for the proximity relationship this word has with 'wallpaper', plain and simple.
 
-It's been some time since I started to use LightDM GTK greeter in my computer, but I find the way it looks out of the box just boring. I have seen other OS login screens which displayed huge, high-res wallpapers that changed with time; and I thought I should implemetn this functionality in my own greeter.
+It's been some time since I started to use LightDM GTK greeter in my computer, but I find the way it looks out of the box just boring. I have seen other OS login screens which displayed huge, high-res wallpapers that changed with time; and I thought I should implement this functionality in my own greeter.
 
 # How does it work?
 Do you really care about it? It's just magic.

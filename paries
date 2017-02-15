@@ -1,0 +1,32 @@
+#!/bin/bash
+
+cd /usr/share/pixmaps
+if [[ -f background.jpg ]]; then
+	exit
+else
+    #Keeps the script working until a network connection is detected.
+
+    ping -c 1 wallhaven.cc
+    while [[ $? != 0 ]]; do	
+	ping -c 1 wallhaven.cc
+    done
+
+    #Creates a library consisting of 10 wallpapers for local use.
+
+    for (( i=0; i<10; i++ )); do
+	until [ -f background$i.jpg ]; do
+	    WALLNUMBER=$((1 + RANDOM % 484214))
+          sudo wget https://wallpapers.wallhaven.cc/wallpapers/full/wallhaven-$WALLNUMBER.jpg
+	  sudo mv wallhaven-$WALLNUMBER.jpg background$i.jpg
+	done
+    done
+
+    #Sets and locks wallpaper for two hours.
+
+    for (( i=0; i<10; i++ )); do
+	mv background$i.jpg background.jpg
+	sleep 2h
+    done
+    rm background.jpg
+fi
+

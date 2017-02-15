@@ -1,6 +1,7 @@
+![Alt text](screenshot.png?raw=true "Paries snapshot")
+
 # Paries
 An automatic random background setter for LightDM GTK greeter.
-
 # Why Paries?
 Paries stands for 'wall' in Latin. I chose this name for the proximity relationship this word has with 'wallpaper', plain and simple.
 

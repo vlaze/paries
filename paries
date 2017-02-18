@@ -1,12 +1,10 @@
 #!/bin/bash
 
-#If exists any background other than background.jpg, change it and exit so as not to repeat backgrounds if the sleep time is not completed.
 cd /usr/share/pixmaps
-#Is there any background[number].jpg file in the folder?
-ls -1 background{1..9} > /dev/null 2>&1
-if [ "$?" = "0" ]; then
+ls -1 background{1..9} > /dev/null 2>&1	  
+if [ "$?" = "0" ]; then #If 'ls' status is 0 (there are backgrounds in the folder)...
     for (( i=1; i<=9; i++ )); do
-	#If backgroundX.jpg exists, set it as the main wallpaper. This will always be the one which follows the current one.
+	#...sets the next wallpaper in the list as the current one.
 	if [ -f background$i.jpg ]; then
 	    mv background$i.jpg background.jpg
 	    break
@@ -19,7 +17,7 @@ else
 	ping -c 1 wallhaven.cc
     done
     #Creates a library consisting of 10 wallpapers for local use.
-    rm background.jpg #Check!!!
+    rm background.jpg #We want to spend the less time possible without a wallpaper, so we wait until now to remove it.
     for (( i=0; i<10; i++ )); do
 	until [ -f background$i.jpg ]; do
 	    WALLNUMBER=$((1 + RANDOM % 484214))
@@ -27,10 +25,9 @@ else
 	    sudo mv wallhaven-$WALLNUMBER.jpg background$i.jpg
 	done
     done
-    #Sets and locks wallpaper for two hours.
-    #When powering off the computer, I want to change to the next wallpaper.
+    #Sets and locks wallpaper for an hour.
     for (( i=0; i<10; i++ )); do
 	mv background$i.jpg background.jpg
-	sleep 15s
+	sleep 1h
     done
 fi
